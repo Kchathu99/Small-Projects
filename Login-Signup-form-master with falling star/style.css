@@ -1,0 +1,126 @@
+:root {
+
+  --number: 30;
+  --size: 20;
+  --size-min: 12;
+  --time: 6;
+}
+
+@media screen and (min-width: 960px) {
+  :root {
+  
+    --number: 10;
+    --size: 36;
+    --size-min: 18;
+    --time: 8;
+  }
+}
+
+body {
+  
+  background-image: url(./images/co.jpg);
+  background-size: cover;
+}
+
+.bg__container{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bg__container.active{
+  opacity: 1;
+}
+
+.bg__container .falling__block{
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+
+.bg__container.falling-random{
+  position: fixed;
+}
+
+.random__layer{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotateZ(0);
+}
+
+.falling-random-image {
+  display: inline-block;
+  position: absolute;
+  z-index: 0;
+  top: -10vh;
+  width: 3px;
+  height: 2em;
+  background-repeat: no-repeat;
+  user-select: none;
+  transform-style: preserve-3d;
+  transform: translateY(-100px) rotate(0deg) perspective(100px, 0px, 0px);
+  animation-name: falling-random;
+  animation-timing-function: linear;
+}
+
+.random__layer .falling-random-image {
+  background-size: 100%;
+}
+
+.falling-random-image.is-rotateX {
+  animation-name: random-rotateX;
+}
+.falling-random-image.is-rotateY {
+  animation-name: random-rotateY;
+}
+
+.falling-random-image.is-rotateZ {
+  animation-name: random-rotateZ;
+}
+
+@keyframes falling-random {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+@keyframes random-rotateX {
+  0% {
+    transform: translateY(0) rotateX(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotateX(360deg);
+  }
+}
+
+@keyframes random-rotateY {
+  0% {
+    transform: translateY(0) rotateY(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotateY(360deg);
+  }
+} 
+
+@keyframes random-rotateZ {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(-360deg);
+  }
+}
